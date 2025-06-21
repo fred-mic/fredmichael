@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Olsen;Fred Michael;;;
+FN:Fred Michael Olsen
+TITLE:Senior Fullstack Software Engineer
+TEL;TYPE=CELL:+4790128800
+EMAIL:fred.m.olsen@gmail.com
+URL:https://fredmichael.com
+END:VCARD
