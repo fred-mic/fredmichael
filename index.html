@@ -8,13 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset and Base Styles */
         :root {
             --dark-bg: #1a202c;
             --dark-bg-secondary: #2d3748;
             --text-primary: #e2e8f0;
             --text-secondary: #a0aec0;
-            --accent: #4fd1c5;
+            --accent: #4fd1c6;
             --border-color: #4a5568;
         }
 
@@ -44,6 +43,7 @@
             border-radius: 8px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             overflow: hidden;
+            z-index: 1;
         }
 
         .sidebar {
@@ -186,11 +186,10 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Social Link Badge Styling */
         .social-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px; /* Replaces margin-right for modern browsers */
+            gap: 10px;
             color: var(--text-secondary);
             text-decoration: none;
             padding: 8px 0 12px 0;
@@ -206,13 +205,80 @@
         }
 
         .social-link:hover svg {
-            transform: scale(1.1); /* Slight grow effect on the icon */
+            transform: scale(1.1); 
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+            background-color: var(--dark-bg);
+            overflow: hidden; /* This is essential! */
+        }
+
+        .background::before,
+        .background::after {
+            content: '';
+            position: absolute;
+            width: 200vmin; 
+            height: 200vmin;
+            border-radius: 5%;
+            background: linear-gradient(to left, rgba(73, 222, 137, 0.6) 30%, rgba(231, 101, 222, 0.5) 70%);
+            background-blend-mode: screen;
+            filter: blur(100px);
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .background::before {
+            top: -40%;
+            left: 8%;
+            animation-name: aurora-1;
+            animation-duration: 11s; 
+            animation-delay: -4s;
+        }
+
+        .background::after {
+            top: -30%;
+            right: 10%;
+            background: linear-gradient(217deg, rgba(251, 104, 163, 0.5), rgba(118, 26, 126, 0.3) 70.71%),
+            linear-gradient(127deg, rgba(78, 226, 199, 0.8), rgba(29, 122, 116, 0.089) 70.71%),
+            linear-gradient(336deg, rgba(46, 156, 139, 0.911), rgb(0 0 255 / 0%) 70.71%);
+            animation-name: aurora-2;
+            animation-duration: 7s; 
+        }
+
+        @keyframes aurora-1 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1.0);
+            }
+            50% {
+                transform: translate(0, 0) rotate(180deg) skew(30deg, 30deg) scale(1.5);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1.0);
+            } 
+        }
+
+        @keyframes aurora-2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1.0);
+            }
+            50% {
+                transform: translate(0, 0) rotate(-180deg) skew(25deg, 25deg) scale(1.5);
+            }
+            100% {
+                transform: translate(0, 0) rotate(-360deg) scale(1.0);
+            }
         }
 
         @media (max-width: 992px) {
             .container {
                 flex-direction: column;
-                margin: 1rem;
+                margin: 1.5rem;
             }
 
             .sidebar {
@@ -227,10 +293,21 @@
             h2 { font-size: 1.2rem; }
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .background { display: none;}
+        }
+
+        @media print { 
+            body, .sidebar, .main-content {
+                background-color: #ffffff;
+                color: var(--dark-bg);
+            }
+            .background { display: none;}
+        }
+
     </style>
 </head>
 <body>
-
     <div class="container">
         <aside class="sidebar">
             <div class="header-title">
@@ -396,6 +473,6 @@
             </section>
         </main>
     </div>
-
+    <div class="background"></div>
 </body>
 </html>
