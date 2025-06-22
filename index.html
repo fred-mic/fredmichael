@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fred Michael Olsen - Senior Fullstack Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-bg: #1a202c;
+            --dark-bg-secondary: #2d3748;
+            --text-primary: #e2e8f0;
+            --text-secondary: #a0aec0;
+            --accent: #4fd1c6;
+            --border-color: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            display: flex;
+            background-color: var(--dark-bg-secondary);
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .sidebar {
+            flex: 0 0 35%;
+            padding: 2.5rem;
+            background-color: var(--dark-bg);
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 2.5rem;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 1.66rem;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-bottom: 1.4rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--text-primary);
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .vcard-container {
+            margin: -30px;
+        }
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid var(--accent);
+            object-fit: cover;
+            display: block;
+            margin: 0 auto 1.5rem;
+        }
+
+        .header-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .header-title .job-title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: var(--text-secondary);
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .competencies ul {
+            list-style: none;
+        }
+
+        .competencies li {
+            margin-bottom: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .competencies strong {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        
+        .clients ul, .education ul {
+            list-style: none;
+        }
+        
+        .clients li, .education li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+        
+        .education strong {
+             color: var(--text-primary);
+             display: block;
+        }
+
+        .experience-item, .career-highlight-item {
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .experience-item:last-child, .career-highlight-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .job-header {
+            margin-bottom: 1rem;
+        }
+        
+        .job-title-dates {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .experience-item ul, .career-highlight-item p {
+            color: var(--text-secondary);
+        }
+        
+        .experience-item li {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 0 12px 0;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--text-primary);
+        }
+
+        .social-link svg {
+            transition: transform 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            transform: scale(1.1); 
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+            background-color: var(--dark-bg);
+            overflow: hidden; /* This is essential! */
+        }
+
+        .background::before,
+        .background::after {
+            content: '';
+            position: absolute;
+            width: 200vmin; 
+            height: 200vmin;
+            border-radius: 5%;
+            background: linear-gradient(to left, rgba(73, 222, 137, 0.6) 30%, rgba(231, 101, 222, 0.5) 70%);
+            background-blend-mode: screen;
+            filter: blur(100px);
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+
+        .background::before {
+            top: -40%;
+            left: 8%;
+            animation-name: aurora-1;
+            animation-duration: 11s; 
+            animation-delay: -4s;
+        }
+
+        .background::after {
+            top: -30%;
+            right: 10%;
+            background: linear-gradient(217deg, rgba(251, 104, 163, 0.5), rgba(118, 26, 126, 0.3) 70.71%),
+            linear-gradient(127deg, rgba(78, 226, 199, 0.8), rgba(29, 122, 116, 0.089) 70.71%),
+            linear-gradient(336deg, rgba(46, 156, 139, 0.911), rgb(0 0 255 / 0%) 70.71%);
+            animation-name: aurora-2;
+            animation-duration: 7s; 
+        }
+
+        @keyframes aurora-1 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1.0);
+            }
+            50% {
+                transform: translate(0, 0) rotate(180deg) skew(30deg, 30deg) scale(1.5);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg) scale(1.0);
+            } 
+        }
+
+        @keyframes aurora-2 {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1.0);
+            }
+            50% {
+                transform: translate(0, 0) rotate(-180deg) skew(25deg, 25deg) scale(1.5);
+            }
+            100% {
+                transform: translate(0, 0) rotate(-360deg) scale(1.0);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+                margin: 1.5rem;
+            }
+
+            .sidebar {
+                flex-basis: auto;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            body { font-size: 14px; }
+            .sidebar, .main-content { padding: 1.5rem; }
+            h1 { font-size: 1.66rem; }
+            h2 { font-size: 1.2rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .background { display: none;}
+        }
+
+        @media print { 
+            body, .sidebar, .main-content {
+                background-color: #ffffff;
+                color: var(--dark-bg);
+            }
+            .background { display: none;}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="header-title">
+                <img src="portrait.png" alt="Fred Michael Olsen Profile Photo" class="profile-photo">
+                <h1>FRED MICHAEL OLSEN</h1>
+                <p class="job-title">Senior Fullstack Software Engineer</p>
+            </div>            
+
+            <div class="sidebar-section">
+                <h2>Profile</h2>
+                <p style="color: var(--text-secondary);">
+                    Experienced full-stack developer with extensive background in web applications, mobile solutions, and system architecture. Proven track record delivering high-quality software solutions across financial services, healthcare, energy, and public sectors. Strong focus on modern web technologies, .NET ecosystem, and DevOps practices.
+                </p>
+            </div>
+
+            <div class="sidebar-section competencies">
+                <h2>Core Competencies</h2>
+                <ul>
+                    <li><strong>Frontend Development:</strong> React, Vue, TypeScript, Blazor, HTML5, CSS</li>
+                    <li><strong>Backend Development:</strong> C#, .NET Core, Entity Framework, RESTful APIs</li>
+                    <li><strong>Database Technologies:</strong> Microsoft SQL Server, T-SQL</li>
+                    <li><strong>DevOps & Tools:</strong> Git, Azure DevOps, TeamCity, Octopus Deploy, CI/CD</li>
+                    <li><strong>Methodologies:</strong> Agile/Scrum, Test-Driven Development, OO Design</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section education">
+                <h2>Education</h2>
+                 <ul>
+                    <li><a href="https://www.kau.se/"><strong>Karlstad University</a> (2003)</strong>Informatics, 10 points</li>
+                    <li><a href="https://www.uio.no/"><strong>University of Oslo</a> (1997-1998)</strong>Musicology, intermediate subject</li>
+                    <li><a href="https://www.stib.no/"><strong>Steinerskolen i Bærum</a> (1992-1995)</strong>Waldorf School, general subjects</li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section clients">
+                <h2>Notable Clients & Projects</h2>
+                <ul>
+                    <li><a href="https://www.banknorwegian.no/">NOBA Bank Group / Bank Norwegian</a></li>
+                    <li><a href="https://www.fortum.com/">Fortum</a></li>
+                    <li><a href="https://www.helsedirektoratet.no/">Norwegian Directorate of Health</a></li>
+                    <li><a href="https://www.udi.no/">Norwegian Directorate of Immigration</a></li>
+                    <li><a href="https://www.dnv.com/">DNV</a></li>
+                    <li><a href="https://www.lanekassen.no/">Lånekassen</a></li>
+                    <li><a href="https://www.norway.no/">Ministry of Foreign Affairs</a></li>
+                    <li><a href="https://www.innovasjonnorge.no/">Innovation Norway</a></li>
+                    <li><a href="https://www.statnett.no/">Statnett</a></li>
+                    <li><a href="https://rodekors.no/">Norwegian Red Cross</a></li>
+                    <li><a href="https://www.uib.no/">Bergen University College</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-section contact-info">
+                <h2>Contact</h2>
+                <div><a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Fred Michael Olsen's profile on LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    <span>My LinkedIn Profile</span>
+                </a></div>
+                <p>Scan or tap this QR code to download my vCard</p>
+                <p><a href="Fred%20Michael%20Olsen.vcf"><img src="vCard.svg" width="100%" alt="QR code with vCard data" /></a></p>                
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section>
+                <h2>Recent Professional Experience</h2>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://www.banknorwegian.no">NOBA Bank Group / Bank Norwegian</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p>
+                        <p class="job-title-dates">Jan 2022 - Feb 2024</p>
+                    </div>
+                    <ul>
+                        <li>Maintained and developed new functionality for customer portals and mobile apps serving six countries.</li>
+                        <li>Implemented critical features using React, TypeScript, .NET Core, and Entity Framework Core.</li>
+                        <li>Enhanced automated testing infrastructure with Selenium.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://norconsult.no">Norconsult</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p><p class="job-title-dates">Jun 2021 - Dec 2021</p>
+                    </div>
+                    <ul>
+                        <li>Further developed SPA application for road reporting (ISY Road) for Norwegian county councils.</li>
+                        <li>Focused on Vue frontend development with TypeScript.</li>
+                        <li>Enhanced backend functionality using .NET Core and Entity Framework Core.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://bedrift.fortum.no/bedrift">Fortum (Hafslund Strøm)</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p>
+                        <p class="job-title-dates">Feb 2019 - Dec 2020</p>
+                    </div>
+                    <ul>
+                        <li>Led development on .NET framework 4.7 and .NET Core 3.1 platforms.</li>
+                        <li>Focused on frontend development using Blazor and React.</li>
+                        <li>Collaborated with UX designers to redesign the corporate customer portal.</li>
+                        <li>Built and maintained REST APIs.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://www.udi.no">The Norwegian Directorate of Immigration</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p>
+                        <p class="job-title-dates">Nov 2017 - Feb 2018</p>
+                    </div>
+                    <ul>
+                        <li>Developed new web application for booking interpreters and translators.</li>
+                        <li>Implemented solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity Framework.</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://www.helsedirektoratet.no/">The Norwegian Directorate of Health</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p>
+                        <p class="job-title-dates">Nov 2016 - Oct 2017</p>
+                    </div>
+                    <ul>
+                        <li>Built single-page web application for processing healthcare worker license applications.</li>
+                        <li>Utilized React, Redux, Jest, ASP.NET Web API, and SQL Server.</li>
+                        <li>Implemented behavior-driven development practices.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item">
+                    <div class="job-header">
+                        <h3><a href="https://www.dnv.com/">DNV</a></h3>
+                        <p class="job-title-dates">Full-stack Developer (contractor)</p>
+                        <p class="job-title-dates">May 2016 - Sep 2016</p>
+                    </div>
+                    <ul>
+                        <li>Developed SPA web application for vessel approval at shipyards.</li>
+                        <li>Implemented with TypeScript, React, Redux, and ASP.NET Web API.</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Earlier Career Highlights (2011-2016)</h2>
+
+                <div class="career-highlight-item">
+                    <h3>ITverket (2015-2016)</h3>
+                    <p>Consultant developing insurance systems, archive management solutions, and member portals.</p>
+                </div>
+                 <div class="career-highlight-item">
+                    <h3>Front Systems (2013-2014)</h3>
+                    <p>Senior developer and architect designing administration systems, online stores, and APIs using ASP.NET, WPF.</p>
+                </div>
+                 <div class="career-highlight-item">
+                    <h3>Epinova & Itera Consulting (2011-2013)</h3>
+                    <p>Senior developer managing EPiServer solutions for major Norwegian institutions and companies.</p>
+                </div>
+
+            </section>
+        </main>
+    </div>
+    <div class="background"></div>
+</body>
+</html>
