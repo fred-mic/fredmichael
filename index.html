@@ -74,7 +74,6 @@
             font-size: 1.4rem;
             margin-bottom: 1.4rem;
             color: var(--accent);
-            text-transform: uppercase;
             letter-spacing: 1px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 0.5rem;
@@ -133,6 +132,11 @@
             color: var(--text-secondary);
         }
 
+        .contact-info img {
+            width: 100%;
+            max-width: 200px;
+        }
+
         .competencies ul {
             list-style: none;
         }
@@ -147,11 +151,11 @@
             font-weight: 700;
         }
         
-        .clients ul, .education ul {
+        .education ul {
             list-style: none;
         }
         
-        .clients li, .education li {
+        .education li {
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
         }
@@ -176,9 +180,40 @@
             margin-bottom: 1rem;
         }
         
+        /* New CSS for split job titles/dates */
+        .job-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;            
+            gap: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .job-row:nth-child(1) {
+            font-style: regular;
+        }
+
+        .job-row:nth-child(2) {
+            font-style: italic;
+        }
+
+        .job-title-dates-left {
+            color: var(--text-secondary);
+            text-align: left;
+            flex: 0 0 50%; 
+            padding-right: 1rem; 
+        }
+
+        .job-title-dates-right {
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
         .job-title-dates {
             color: var(--text-secondary);
             font-style: italic;
+            text-align: right;
         }
         
         .experience-item ul, .career-highlight-item p {
@@ -294,6 +329,11 @@
             .sidebar, .main-content { padding: 1.5rem; }
             h1 { font-size: 1.66rem; }
             h2 { font-size: 1.2rem; }
+            
+            /* Stack job details on mobile */
+            .job-title-dates-right {
+                text-align: left;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -320,34 +360,46 @@
             </div>            
 
             <div class="sidebar-section">
-                <h2>Profile</h2>
+                <h2>EXECUTIVE SUMMARY</h2>
                 <p style="color: var(--text-secondary);">
-                    Experienced fullstack developer with extensive background in web applications, mobile solutions, and system architecture. Proven track record delivering high-quality software solutions across financial services, healthcare, energy, and public sectors. Strong focus on modern web technologies, .NET ecosystem, and DevOps practices. Recent experience from Next.js, Python, FastAPI, Postgres, and AWS.
+                    Senior Full-Stack Engineer with 15+ years delivering high-scale customer-facing platforms in banking, energy, and public sectors. Specialist in bridging modern Frontend (React, TS) with robust Backend architectures (.NET, Azure). Recently certified in TensorFlow and AI-assisted development. Proven at reducing deployment times, improving test coverage, and mentoring teams in monorepo/CI-CD environments. Seeking senior/lead opportunities (remote or relocation-friendly).
                 </p>
             </div>
 
             <div class="sidebar-section competencies">
-                <h2>Core Competencies</h2>
+                <h2>TECHNICAL SKILLS</h2>
                 <ul>
-                    <li><strong>Frontend Development:</strong> React, React Native, Vue, TypeScript, HTML5, Tailwind CSS</li>
-                    <li><strong>Backend Development:</strong> C#, .NET, Python, FastAPI, RESTful APIs</li>
-                    <li><strong>Database Technologies:</strong> SQL Server, T-SQL, Oracle, Postgres, Entity Framework, Prisma</li>
-                    <li><strong>DevOps & Tools:</strong> Git, Azure DevOps, AWS, TeamCity, Octopus, Docker, GitHub Copilot</li>
-                    <li><strong>Methodologies:</strong> Scrum, Kanban, TDD, OO Design</li>
+                    <li><strong>Frontend:</strong> React, React Native, TypeScript, Vue.js, Tailwind, Storybook, Figma.</li>
+                    <li><strong>Backend:</strong> C# .NET Core, Python (FastAPI), RESTful APIs, Entity Framework.</li>
+                    <li><strong>Database:</strong> SQL Server, PostgreSQL, Oracle.</li>
+                    <li><strong>Cloud/DevOps:</strong> Azure DevOps, AWS, CI/CD (TeamCity, Octopus), Docker.</li>
+                    <li><strong>AI/ML:</strong> TensorFlow, AI-Assisted Development (Copilot/Cursor).</li>
                 </ul>
             </div>
 
             <div class="sidebar-section education">
-                <h2>Education</h2>
+                <h2>EDUCATION</h2>
                  <ul>
-                    <li><a href="https://www.kau.se/" target="_blank" rel="noopener noreferrer" aria-label="Visit Karlstad University website (opens in a new tab)"><strong>Karlstad University</a> (2003)</strong>Informatics, 10 points</li>
-                    <li><a href="https://www.uio.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit University of Oslo website (opens in a new tab)"><strong>University of Oslo</a> (1997-1998)</strong>Musicology, intermediate subject</li>
-                    <li><a href="https://www.stib.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Steinerskolen i Bærum website (opens in a new tab)"><strong>Steinerskolen i Bærum</a> (1992-1995)</strong>Waldorf School, general subjects</li>
+                    <li><a href="https://www.kau.se/" target="_blank" rel="noopener noreferrer" aria-label="Visit Karlstad University website (opens in a new tab)"><strong>Karlstad University</a> (2003)</strong>Informatics, 10 credits</li>
+                </ul>
+            </div>
+            <div class="sidebar-section education">
+                <h2>CERTIFICATIONS</h2>
+                <ul>
+                    <li>
+                    <a href="https://www.coursera.org/account/accomplishments/professional-cert/8XP7KLU1JF8R" target="_blank" rel="noopener noreferrer" aria-label="View Coursera certificate for TensorFlow Developer (opens in a new tab)"><strong>TensorFlow Developer</strong></a>
+                    <p>DeepLearning.AI (2025)</p>
+                </li>
+                    <li>
+                    <a href="https://www.coursera.org/account/accomplishments/verify/UC32Y4W55RS4" target="_blank" rel="noopener noreferrer" aria-label="View Coursera certificate for Team Software Engineering with AI (opens in a new tab)"><strong>Team software development with AI</strong></a>
+                    <p>DeepLearning.AI (2025)</p>
+                    </li>
                 </ul>
             </div>
 
+            <!--
             <div class="sidebar-section clients">
-                <h2>Notable Clients & Projects</h2>
+                <h2>Notable Clients</h2>
                 <ul>
                     <li><a href="https://www.banknorwegian.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian</a></li>
                     <li><a href="https://www.fortum.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Fortum website (opens in a new tab)">Fortum</a></li>
@@ -362,9 +414,10 @@
                     <li><a href="https://www.uib.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit University of Bergen website (opens in a new tab)">Bergen University College</a></li>
                 </ul>
             </div>
+            -->
 
             <div class="sidebar-section contact-info">
-                <h2>Contact</h2>
+                <h2>CONTACT</h2>
                 <div><a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Fred Michael Olsen's profile on LinkedIn (opens in a new tab)">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px" height="24px">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
@@ -372,130 +425,123 @@
                     <span>My LinkedIn Profile</span>
                 </a></div>
                 <p>Scan or tap this QR code to download my vCard</p>
-                <p><a href="Fred%20Michael%20Olsen.vcf" download aria-label="Download vCard for Fred Michael Olsen"><img src="vCard.svg" width="100%" alt="QR code with vCard data" /></a></p>                
+                <p><a href="Fred%20Michael%20Olsen.vcf" download aria-label="Download vCard for Fred Michael Olsen"><img src="vCard.svg" alt="QR code with vCard data" /></a></p>                
             </div>
         </aside>
 
         <main class="main-content">
             <section>
-                <h2>Recent Professional Experience</h2>
+                <h2>PROFESSIONAL EXPERIENCE as a contractor 2016-2024</h2>
 
                 <div class="experience-item">
                     <div class="job-header">
-                        <h3><a href="https://www.banknorwegian.no" target="_blank" rel="noopener noreferrer" aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian (merged with Nordax Bank into NOBA Bank Group)</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p>
-                        <p class="job-title-dates">Jan 2022 - Feb 2024</p>
+                        <h3><a href="https://www.banknorwegian.no" target="_blank" rel="noopener noreferrer" aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian (NOBA Bank Group)</a></h3>
+                        <div class="job-row">
+                            <p class="job-title-dates-left">A leading Nordic digital bank serving more than two million customers in eight countries.</p>
+                            <p class="job-title-dates-right">Fornebu, Norway / Remote</p>
+                        </div>
+                        <div class="job-row">
+                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (remote/hybrid)</p>
+                            <p class="job-title-dates-right">Jan 2022 - Feb 2024</p>
+                        </div>
                     </div>
                     <ul>
-                        <li>Maintained and developed new functionality for customer portals and mobile apps serving 6 countries in 6 different languages.</li>
-                        <li>Implemented critical features using React, TypeScript, Storybook, Figma, .NET Core, and Entity Framework Core.</li>
-                        <li>Enhanced automated testing infrastructure with Jest and Selenium.</li>
+                        <li>Led the modernization of customer portals and mobile apps handling high-volume financial transactions across six countries.</li>
+                        <li>Architected critical frontend components using React & TypeScript within a Monorepo structure, improving code reusability.</li>
+                        <li>Migrated legacy systems to .NET 6, significantly improving API response times and security compliance.</li>
+                        <li>Engineered a comprehensive automated testing suite (Jest/Selenium) raising automated coverage and reducing production bugs.</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://norconsult.no" target="_blank" rel="noopener noreferrer" aria-label="Visit Norconsult website (opens in a new tab)">Norconsult</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p><p class="job-title-dates">Jun 2021 - Dec 2021</p>
+                        <div class="job-row">
+                            <p class="job-title-dates-left">A leading Nordic engineering consultancy combining infrastructure, architecture, and digital innovation, with 7,000+ employees</p>
+                            <p class="job-title-dates-right">Sandvika, Norway</p>
+                        </div>
+                        <div class="job-row">
+                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (hybrid)</p>
+                            <p class="job-title-dates-right">Jun 2021 - Dec 2021</p>
+                        </div>
                     </div>
                     <ul>
-                        <li>Further developed SPA application for road reporting (ISY Road) for Norwegian county councils.</li>
-                        <li>Focused on Vue frontend development with TypeScript.</li>
-                        <li>Enhanced backend functionality using .NET Core and Entity Framework Core.</li>
+                        <li>Spearheaded the frontend development of 'ISY Road,' a complex SPA used by government councils for road infrastructure reporting.</li>
+                        <li>Refactored the Vue.js codebase to TypeScript, resulting in improved type safety and developer velocity.</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
                     <div class="job-header">
-                        <h3><a href="https://bedrift.fortum.no/bedrift" target="_blank" rel="noopener noreferrer" aria-label="Visit Fortum website (opens in a new tab)">Fortum (Hafslund Strøm)</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p>
-                        <p class="job-title-dates">Feb 2019 - Dec 2020</p>
+                        <h3><a href="https://bedrift.fortum.no/bedrift" target="_blank" rel="noopener noreferrer" aria-label="Visit Fortum website (opens in a new tab)">Fortum</a></h3>
+                        <div class="job-row">
+                            <p class="job-title-dates-left">A major Nordic energy provider focused on reliable, low-carbon power generation and innovative customer technology</p>
+                            <p class="job-title-dates-right">Oslo, Norway</p>
+                        </div>
+                        <div class="job-row">
+                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (remote/hybrid)</p>
+                            <p class="job-title-dates-right">Feb 2019 - Dec 2020</p>
+                        </div>
                     </div>
                     <ul>
-                        <li>Led development on .NET framework 4.7 and .NET Core 3.1 platforms.</li>
-                        <li>Focused on frontend development using Blazor and React.</li>
-                        <li>Collaborated with UX designers to redesign the corporate customer portal.</li>
-                        <li>Built and maintained REST APIs.</li>
+                        <li>Led the full-stack engineering for a critical business customer portal overhaul, directly impacting user engagement and self-service rates.</li>
+                        <li>Bridged the gap between design and code, partnering with UX experts to implement pixel-perfect, responsive UIs in React and Blazor.</li>
+                        <li>Engineered secure and scalable REST APIs as the backbone for the company's consumer-facing digital products.</li>
                     </ul>
                 </div>
 
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://www.udi.no" target="_blank" rel="noopener noreferrer" aria-label="Visit The Norwegian Directorate of Immigration website (opens in a new tab)">The Norwegian Directorate of Immigration</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p>
-                        <p class="job-title-dates">Nov 2017 - Feb 2018</p>
+                        <p class="job-title-dates">Oslo, Norway</p>
+                        <div class="job-row">
+                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong></p>
+                            <p class="job-title-dates-right">Nov 2017 - Feb 2018</p>
+                        </div>
                     </div>
                     <ul>
-                        <li>Developed new web application for booking interpreters and translators.</li>
-                        <li>Implemented solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity Framework.</li>
+                        <li>Developed a brand new web application for booking interpreters and translators while mentoring junior developers.</li>
+                        <li>Implemented the solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity Framework.</li>
                     </ul>
                 </div>
                 
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://www.helsedirektoratet.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Norwegian Directorate of Health website (opens in a new tab)">The Norwegian Directorate of Health</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p>
-                        <p class="job-title-dates">Nov 2016 - Oct 2017</p>
+                        <p class="job-title-dates">Oslo, Norway</p>
+                        <div class="job-row">
+                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong></p>
+                            <p class="job-title-dates-right">Nov 2016 - Oct 2017</p>
+                        </div>
                     </div>
                     <ul>
-                        <li>Built single-page web application for processing healthcare worker license applications.</li>
-                        <li>Utilized React, Redux, Jest, ASP.NET Web API, and SQL Server.</li>
-                        <li>Implemented behavior-driven development practices.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://www.dnv.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit DNV website (opens in a new tab)">DNV</a></h3>
-                        <p class="job-title-dates">Fullstack Developer (contractor)</p>
-                        <p class="job-title-dates">May 2016 - Sep 2016</p>
-                    </div>
-                    <ul>
-                        <li>Developed SPA web application for vessel approval at shipyards.</li>
-                        <li>Implemented with TypeScript, React, Redux, and ASP.NET Web API.</li>
+                        <li>Engineered a single-page web application for processing healthcare worker license applications using React, Redux, Jest and ASP.NET Web API.</li>
                     </ul>
                 </div>
             </section>
             
             <section>
-                <h2>Earlier Career Highlights (2013-2016)</h2>
+                <h2>EARLIER CAREER HIGHLIGHTS (2000-2016)</h2>
 
                 <div class="career-highlight-item">
                     <h3>ITverket (2015-2016)</h3>
-                    <p>Consultant developing insurance systems, archive management solutions, and member portals.</p>
+                    <p>Senior Consultant</p>
                 </div>
                  <div class="career-highlight-item">
                     <h3>Front Systems (2013-2014)</h3>
-                    <p>Senior developer and architect designing a POS system with RFID and external APIs using C#, ASP.NET, WPF, SQL Server.</p>
+                    <p>Senior Systems Developer</p>
                 </div>
                  <div class="career-highlight-item">
-                    <h3>Epinova & Itera Consulting (2011-2013)</h3>
-                    <p>Senior developer managing EPiServer solutions for major Norwegian institutions and companies.</p>
+                    <h3>Independent contractor (2005-2012)</h3>
+                    <p>Developed web solutions for, among others, the Ministry of Foreign Affairs, Statnett, Innovation Norway and Red Cross.</p>
                 </div>
-
-            </section>
-            
-            <section>
-                <h2>Certifications</h2>
-
                 <div class="career-highlight-item">
-                    <h3>DeepLearning.AI (2025)</h3>
-                    <p><a href="https://www.coursera.org/account/accomplishments/professional-cert/8XP7KLU1JF8R" target="_blank" rel="noopener noreferrer" aria-label="View Coursera certificate for TensorFlow Developer (opens in a new tab)">TensorFlow Developer</a></p>
+                    <h3>HansaWorld Norway (2004-2005)</h3>
+                    <p>Product Manager for an international ERP product suite.</p>
                 </div>
-
                 <div class="career-highlight-item">
-                    <h3>DeepLearning.AI (2025)</h3>
-                    <p><a href="https://www.coursera.org/account/accomplishments/verify/UC32Y4W55RS4" target="_blank" rel="noopener noreferrer" aria-label="View Coursera certificate for Team Software Engineering with AI (opens in a new tab)">Team software development with AI</a></p>
-                </div>
-
-                <div class="career-highlight-item">
-                    <h3>Microsoft (2004)</h3>
-                    <p>Developing and Implementing Web Applications with Microsoft Visual C# .NET and Microsoft Visual Studio .NET (exam 70-315)</p>
-                </div>
-
-                <div class="career-highlight-item">
-                    <h3>Microsoft (2004)</h3>
-                    <p>Developing and Implementing Windows-based Applications with Microsoft Visual C# .NET and Microsoft Visual Studio .NET (exam 70-316)</p>
+                    <h3>LUUP (Contopronto) (2000-2001)</h3>
+                    <p>Developed prototypes and the first production version of the mobile and web-based payment solution.</p>
                 </div>
 
             </section>
