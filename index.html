@@ -32,7 +32,14 @@
 
         body {
             font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--dark-bg);
+            background-color: #64869F;;
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
             color: var(--text-primary);
             line-height: 1.6;
             font-size: 16px;
@@ -180,7 +187,6 @@
             margin-bottom: 1rem;
         }
         
-        /* New CSS for split job titles/dates */
         .job-row {
             display: flex;
             justify-content: space-between;
@@ -246,73 +252,6 @@
             transform: scale(1.1); 
         }
 
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1; 
-            background-color: var(--dark-bg);
-            overflow: hidden; /* This is essential! */
-        }
-
-        .background::before,
-        .background::after {
-            content: '';
-            position: absolute;
-            width: 200vmin; 
-            height: 200vmin;
-            border-radius: 5%;
-            background: linear-gradient(to left, rgba(73, 222, 137, 0.6) 30%, rgba(231, 101, 222, 0.5) 70%);
-            background-blend-mode: screen;
-            filter: blur(100px);
-            animation-iteration-count: infinite;
-            animation-timing-function: linear;
-        }
-
-        .background::before {
-            top: -40%;
-            left: 8%;
-            animation-name: aurora-1;
-            animation-duration: 11s; 
-            animation-delay: -4s;
-        }
-
-        .background::after {
-            top: -30%;
-            right: 10%;
-            background: linear-gradient(217deg, rgba(251, 104, 163, 0.5), rgba(118, 26, 126, 0.3) 70.71%),
-            linear-gradient(127deg, rgba(78, 226, 199, 0.8), rgba(29, 122, 116, 0.089) 70.71%),
-            linear-gradient(336deg, rgba(46, 156, 139, 0.911), rgb(0 0 255 / 0%) 70.71%);
-            animation-name: aurora-2;
-            animation-duration: 7s; 
-        }
-
-        @keyframes aurora-1 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1.0);
-            }
-            50% {
-                transform: translate(0, 0) rotate(180deg) skew(30deg, 30deg) scale(1.5);
-            }
-            100% {
-                transform: translate(0, 0) rotate(360deg) scale(1.0);
-            } 
-        }
-
-        @keyframes aurora-2 {
-            0% {
-                transform: translate(0, 0) rotate(0deg) scale(1.0);
-            }
-            50% {
-                transform: translate(0, 0) rotate(-180deg) skew(25deg, 25deg) scale(1.5);
-            }
-            100% {
-                transform: translate(0, 0) rotate(-360deg) scale(1.0);
-            }
-        }
-
         @media (max-width: 992px) {
             .container {
                 flex-direction: column;
@@ -347,7 +286,6 @@
             }
             .background { display: none;}
         }
-
     </style>
 </head>
 <body>
@@ -358,7 +296,6 @@
                 <h1>FRED MICHAEL OLSEN</h1>
                 <p class="job-title">Senior Fullstack Software Engineer</p>
             </div>            
-
             <div class="sidebar-section">
                 <h2>EXECUTIVE SUMMARY</h2>
                 <p style="color: var(--text-secondary);">
@@ -400,26 +337,6 @@
                     </li>
                 </ul>
             </div>
-
-            <!--
-            <div class="sidebar-section clients">
-                <h2>Notable Clients</h2>
-                <ul>
-                    <li><a href="https://www.banknorwegian.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian</a></li>
-                    <li><a href="https://www.fortum.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit Fortum website (opens in a new tab)">Fortum</a></li>
-                    <li><a href="https://www.helsedirektoratet.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Norwegian Directorate of Health website (opens in a new tab)">Norwegian Directorate of Health</a></li>
-                    <li><a href="https://www.udi.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Norwegian Directorate of Immigration website (opens in a new tab)">Norwegian Directorate of Immigration</a></li>
-                    <li><a href="https://www.dnv.com/" target="_blank" rel="noopener noreferrer" aria-label="Visit DNV website (opens in a new tab)">DNV</a></li>
-                    <li><a href="https://www.lanekassen.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Lånekassen website (opens in a new tab)">Lånekassen</a></li>
-                    <li><a href="https://www.norway.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Ministry of Foreign Affairs website (opens in a new tab)">Ministry of Foreign Affairs</a></li>
-                    <li><a href="https://www.innovasjonnorge.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Innovation Norway website (opens in a new tab)">Innovation Norway</a></li>
-                    <li><a href="https://www.statnett.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Statnett website (opens in a new tab)">Statnett</a></li>
-                    <li><a href="https://rodekors.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit Norwegian Red Cross website (opens in a new tab)">Norwegian Red Cross</a></li>
-                    <li><a href="https://www.uib.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit University of Bergen website (opens in a new tab)">Bergen University College</a></li>
-                </ul>
-            </div>
-            -->
-
             <div class="sidebar-section contact-info">
                 <h2>CONTACT</h2>
                 <div><a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="View Fred Michael Olsen's profile on LinkedIn (opens in a new tab)">
@@ -432,11 +349,9 @@
                 <p><a href="Fred%20Michael%20Olsen.vcf" download aria-label="Download vCard for Fred Michael Olsen"><img src="vCard.svg" alt="QR code with vCard data" /></a></p>                
             </div>
         </aside>
-
         <main class="main-content">
             <section>
                 <h2>PROFESSIONAL EXPERIENCE as a contractor 2016-2024</h2>
-
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://www.banknorwegian.no" target="_blank" rel="noopener noreferrer" aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian (NOBA Bank Group)</a></h3>
@@ -456,7 +371,6 @@
                         <li>Engineered a comprehensive automated testing suite (Jest/Selenium) raising automated coverage and reducing production bugs.</li>
                     </ul>
                 </div>
-
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://norconsult.no" target="_blank" rel="noopener noreferrer" aria-label="Visit Norconsult website (opens in a new tab)">Norconsult</a></h3>
@@ -474,7 +388,6 @@
                         <li>Refactored the Vue.js codebase to TypeScript, resulting in improved type safety and developer velocity.</li>
                     </ul>
                 </div>
-
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://bedrift.fortum.no/bedrift" target="_blank" rel="noopener noreferrer" aria-label="Visit Fortum website (opens in a new tab)">Fortum</a></h3>
@@ -493,7 +406,6 @@
                         <li>Engineered secure and scalable REST APIs as the backbone for the company's consumer-facing digital products.</li>
                     </ul>
                 </div>
-
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://www.udi.no" target="_blank" rel="noopener noreferrer" aria-label="Visit The Norwegian Directorate of Immigration website (opens in a new tab)">The Norwegian Directorate of Immigration</a></h3>
@@ -508,7 +420,6 @@
                         <li>Implemented the solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity Framework.</li>
                     </ul>
                 </div>
-                
                 <div class="experience-item">
                     <div class="job-header">
                         <h3><a href="https://www.helsedirektoratet.no/" target="_blank" rel="noopener noreferrer" aria-label="Visit The Norwegian Directorate of Health website (opens in a new tab)">The Norwegian Directorate of Health</a></h3>
@@ -523,7 +434,6 @@
                     </ul>
                 </div>
             </section>
-
             <section>
                 <h2>OWN PROJECTS</h2>
                 <div class="experience-item">
@@ -536,11 +446,9 @@
                         <li>Built and owned end-to-end DevOps infrastructure: Docker containerization, automated CI/CD pipelines via GitHub Actions, and production deployment architecture ensuring zero-downtime deployments for both database and application layers.</li>
                     </ul>
                 </div>
-            </section>
-            
+            </section>       
             <section>
                 <h2>EARLIER CAREER HIGHLIGHTS (2000-2016)</h2>
-
                 <div class="career-highlight-item">
                     <h3>ITverket (2015-2016)</h3>
                     <p>Senior Consultant</p>
@@ -561,10 +469,8 @@
                     <h3>LUUP (Contopronto) (2000-2001)</h3>
                     <p>Developed prototypes and the first production version of the mobile and web-based payment solution.</p>
                 </div>
-
             </section>
         </main>
     </div>
-    <div class="background"></div>
 </body>
 </html>
