@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Table Topics Draw</title>
+<style>
+  :root {
+    --bg: #f6f7fb;
+    --surface: #ffffff;
+    --ink: #1b1f3b;
+    --muted: #5d6385;
+    --line: #dfe2ee;
+    --adjective: #2f6fed;
+    --place: #11875f;
+    --verb: #c9285f;
+    --btn-text: #ffffff;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12141c;
+      --surface: #1b1e2a;
+      --ink: #f1f2f8;
+      --muted: #a3a8c4;
+      --line: #2c3042;
+      --adjective: #0b2767;
+      --place: #0f754f;
+      --verb: #811136;
+      --btn-text: #12141c;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12141c;
+    --surface: #1b1e2a;
+    --ink: #f1f2f8;
+    --muted: #a3a8c4;
+    --line: #2c3042;
+    --adjective: #7ba3ff;
+    --place: #4fd1a1;
+    --verb: #ff7aa6;
+    --btn-text: #12141c;
+  }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); height: 100%; }
+  * , *::before, *::after { box-sizing: inherit; }
+  body {
+    margin: 0;
+    min-height: 100%;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+  main {
+    width: 100%;
+    max-width: 760px;
+    padding: 28px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .draw {
+    align-self: center;
+    font: inherit;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.01em;
+    padding: 14px 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--bg);
+    cursor: pointer;
+    transition: transform 0.12s ease;
+  }
+  .draw:active { transform: scale(0.96); }
+  .draw svg { width: 30px; height: 30px; display: block; }
+  .draw:focus-visible, .word:focus-visible, .reset:focus-visible {
+    outline: 3px solid var(--adjective);
+    outline-offset: 3px;
+  }
+  .words { display: flex; flex-direction: column; gap: 14px; }
+  .word {
+    --accent: var(--adjective);
+    position: relative;
+    width: 100%;
+    min-height: 132px;
+    padding: 18px 20px 18px 30px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    overflow: hidden;
+  }
+
+  .word[data-cat="place"] { --accent: var(--place); }
+  .word[data-cat="verb"] { --accent: var(--verb); }
+  .word .text {
+    font-size: clamp(2.3rem, 10vw, 4.6rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+    overflow-wrap: anywhere;
+  }
+  .word.empty .text { color: var(--muted); font-size: clamp(1.4rem, 6vw, 2.2rem); font-weight: 600; }
+  .word:disabled { cursor: default; }
+  .word.pop .text { animation: pop 0.28s ease-out; }
+  @keyframes pop {
+    from { transform: translateY(8px) scale(0.97); opacity: 0; }
+    to { transform: none; opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .word.pop .text { animation: none; }
+    .draw { transition: none; }
+  }
+  .hint { margin: 0; text-align: center; color: var(--muted); font-size: 0.95rem; }
+  .status {
+    display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center;
+    color: var(--muted); font-size: 0.9rem;
+  }
+  .reset {
+    font: inherit; font-size: 0.9rem; color: var(--muted);
+    background: none; border: 0; padding: 4px 6px; cursor: pointer;
+    text-decoration: underline; align-self: center;
+  }
+</style>
+</head>
+<body>
+<main>
+  <button class="draw" id="draw" type="button" aria-label="Draw new words" title="Draw new words"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg></button>
+
+  <div class="words" id="words" aria-live="polite">
+    <button class="word empty" data-cat="adjective" type="button" disabled><span class="cat"></span><span class="text"></span></button>
+    <button class="word empty" data-cat="place" type="button" disabled><span class="cat"></span><span class="text"></span></button>
+    <button class="word empty" data-cat="verb" type="button" disabled><span class="cat"></span><span class="text"></span></button>
+  </div>
+
+  <p class="hint">Tap a word to swap it for a new one from the same category.</p>
+  <div class="status" id="status"></div>
+  <button class="reset" id="reset" type="button">Reset used words</button>
+</main>
+
+<script>
+(function () {
+  var categories = [
+    { key: "verb", label: "", words: [
+      "Running", "Singing", "Jumping", "Laughing", "Building",
+      "Dancing", "Exploring", "Painting", "Climbing",
+      "Sharing", "Learning", "Cooking", "Traveling",
+      "Smiling", "Discovering"
+    ]},
+    { key: "adjective", label: "", words: [
+      "Brave", "Curious", "Cheerful", "Bright", "Gentle", "Clever", 
+      "Joyful", "Bold", "Calm", "Friendly", "Creative", 
+      "Lucky", "Playful", "Quiet", "Energetic"
+    ]},
+    { key: "place", label: "", words: [
+      "Airport", "Beach", "School", "Library", "Farmers’ market",
+      "Road trip", "Birthday", "Campsite", "Bus station", "Rooftop",
+      "Surprise", "Playground", "Bakery", "Mountain", "Rainy day"
+    ]}
+  ];
+
+  var used = new Set();            // exclude list: every word ever shown
+  var cards = Array.prototype.slice.call(document.querySelectorAll(".word"));
+  var statusEl = document.getElementById("status");
+
+  function available(cat) {
+    return cat.words.filter(function (w) { return !used.has(w); });
+  }
+
+  function pick(cat) {
+    var pool = available(cat);
+    if (pool.length === 0) return null;
+    var word = pool[Math.floor(Math.random() * pool.length)];
+    used.add(word);
+    return word;
+  }
+
+  function show(card, cat, word) {
+    var text = card.querySelector(".text");
+    card.classList.remove("pop", "empty");
+    if (word === null) {
+      text.textContent = "-";
+      card.classList.add("empty");
+      card.disabled = true;
+    } else {
+      text.textContent = word;
+      card.disabled = false;
+    }
+    void card.offsetWidth;         // restart animation
+    card.classList.add("pop");
+  }
+
+  function renderStatus() {
+    statusEl.innerHTML = "";
+    categories.forEach(function (cat) {
+      var s = document.createElement("span");
+      s.textContent = available(cat).length + " left";
+      statusEl.appendChild(s);
+    });
+  }
+
+  function drawAll() {
+    categories.forEach(function (cat, i) {
+      show(cards[i], cat, pick(cat));
+    });
+    renderStatus();
+  }
+
+  cards.forEach(function (card, i) {
+    card.addEventListener("click", function () {
+      var cat = categories[i];
+      var word = pick(cat);
+      if (word === null) {
+        // nothing new to offer: keep the current word on screen
+        card.querySelector(".cat").textContent = cat.label + " (no more words)";
+        return;
+      }
+      card.querySelector(".cat").textContent = cat.label;
+      show(card, cat, word);
+      renderStatus();
+    });
+  });
+
+  document.getElementById("draw").addEventListener("click", drawAll);
+
+  document.getElementById("reset").addEventListener("click", function () {
+    used.clear();
+    cards.forEach(function (card, i) {
+      card.querySelector(".cat").textContent = categories[i].label;
+      card.querySelector(".text").textContent = "";
+      card.classList.add("empty");
+      card.classList.remove("pop");
+      card.disabled = true;
+    });
+    renderStatus();
+  });
+
+  renderStatus();
+})();
+</script>
+</body>
+</html>
