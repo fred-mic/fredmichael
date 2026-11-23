@@ -1,27 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fred Michael Olsen - Forward Deployed AI Engineer</title>
+    <meta name="description"
+        content="Fred Michael Olsen — Forward Deployed AI Engineer with 15+ years delivering enterprise full-stack and AI solutions across banking, energy, maritime, and public sectors.">
+    <title>Fred Michael Olsen — Forward Deployed AI Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <style>
         :root {
-            --dark-bg: #1a202c;
-            --dark-bg-secondary: #2d3748;
-            --text-primary: #e2e8f0;
-            --text-secondary: #a0aec0;
-            --accent: #4fd1c6;
-            --border-color: #4a5568;
+            --bg-page: #090d16;
+            --bg-surface: #0f1624;
+            --bg-surface-elevated: #141d30;
+            --bg-surface-hover: #19243b;
+            --bg-pill: rgba(45, 212, 191, 0.08);
+            --bg-pill-neutral: rgba(148, 163, 184, 0.08);
+            --border-subtle: rgba(148, 163, 184, 0.14);
+            --border-strong: rgba(148, 163, 184, 0.26);
+            --border-accent: rgba(45, 212, 191, 0.32);
+
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+
+            --accent: #2dd4bf;
+            --accent-strong: #5eead4;
+            --accent-soft: rgba(45, 212, 191, 0.14);
+            --accent-secondary: #38bdf8;
+
+            --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.35), 0 12px 32px -12px rgba(0, 0, 0, 0.55);
+            --shadow-glow: 0 0 0 1px rgba(45, 212, 191, 0.2), 0 10px 30px -10px rgba(45, 212, 191, 0.16);
+            --grid-color: rgba(148, 163, 184, 0.05);
+            --nav-bg: rgba(9, 13, 22, 0.78);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
         }
 
-        * {
+        [data-theme="light"] {
+            --bg-page: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-surface-elevated: #f1f5f9;
+            --bg-surface-hover: #f8fafc;
+            --bg-pill: rgba(13, 148, 136, 0.08);
+            --bg-pill-neutral: rgba(15, 23, 42, 0.05);
+            --border-subtle: rgba(15, 23, 42, 0.1);
+            --border-strong: rgba(15, 23, 42, 0.18);
+            --border-accent: rgba(13, 148, 136, 0.35);
+
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+
+            --accent: #0d9488;
+            --accent-strong: #0f766e;
+            --accent-soft: rgba(13, 148, 136, 0.1);
+            --accent-secondary: #0284c7;
+
+            --shadow-card: 0 1px 2px rgba(15, 23, 42, 0.05), 0 10px 28px -14px rgba(15, 23, 42, 0.12);
+            --shadow-glow: 0 0 0 1px rgba(13, 148, 136, 0.2), 0 10px 24px -10px rgba(13, 148, 136, 0.16);
+            --grid-color: rgba(15, 23, 42, 0.04);
+            --nav-bg: rgba(248, 250, 252, 0.84);
+        }
+
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -29,306 +84,1186 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 84px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         body {
-            font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: #64869F;
-            ;
-            background-image: url('background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+            font-family: var(--font-sans);
+            background-color: var(--bg-page);
+            background-image:
+                radial-gradient(ellipse 80% 45% at 50% -12%, rgba(45, 212, 191, 0.11), transparent 70%),
+                radial-gradient(ellipse 50% 35% at 85% 5%, rgba(56, 189, 248, 0.07), transparent 65%),
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
             background-attachment: fixed;
             min-height: 100vh;
-            margin: 0;
             color: var(--text-primary);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            display: flex;
-            background-color: var(--dark-bg-secondary);
-            border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .sidebar {
-            flex: 0 0 35%;
-            padding: 2.5rem;
-            background-color: var(--dark-bg);
-        }
-
-        .main-content {
-            flex: 1;
-            padding: 2.5rem;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4 {
-            color: var(--text-primary);
-            font-weight: 700;
-        }
-
-        h1 {
-            font-size: 1.66rem;
-            line-height: 1.2;
-        }
-
-        h2 {
-            font-size: 1.4rem;
-            margin-bottom: 1.4rem;
-            color: var(--accent);
-            letter-spacing: 1px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-
-        h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.25rem;
+            line-height: 1.65;
+            font-size: 15px;
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
         a {
-            color: var(--text-secondary);
+            color: inherit;
             text-decoration: none;
-            transition: color 0.3s ease;
+            transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
         }
 
-        a:hover {
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+            border-radius: 6px;
+        }
+
+        /* Top Navigation Bar */
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: var(--nav-bg);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .topbar-inner {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 3px var(--accent-soft);
+            flex-shrink: 0;
+        }
+
+        .status-badge strong {
             color: var(--text-primary);
+            font-weight: 600;
         }
 
-        ul {
-            list-style-position: inside;
-            padding-left: 0;
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
         }
 
-        .sidebar-section {
-            margin-bottom: 2rem;
+        .nav-links a {
+            font-size: 0.84rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 0.4rem 0.75rem;
+            border-radius: 7px;
         }
 
-        .vcard-container {
-            margin: -30px;
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+            background: var(--bg-pill-neutral);
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+            background: var(--bg-pill);
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .icon-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            height: 34px;
+            padding: 0 0.75rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-surface);
+            color: var(--text-secondary);
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .icon-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--border-strong);
+            background: var(--bg-surface-hover);
+        }
+
+        .icon-btn.square {
+            width: 34px;
+            padding: 0;
+        }
+
+        .icon-btn svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Main Page Grid */
+        .page-shell {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+            display: grid;
+            grid-template-columns: 340px minmax(0, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* Left Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .profile-card {
+            text-align: left;
+        }
+
+        .profile-top {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            margin-bottom: 1.15rem;
         }
 
         .profile-photo {
-            width: 180px;
-            height: 180px;
+            width: 82px;
+            height: 82px;
             border-radius: 50%;
-            border: 4px solid var(--accent);
             object-fit: cover;
-            display: block;
-            margin: 0 auto 1.5rem;
+            border: 2px solid var(--border-accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+            flex-shrink: 0;
         }
 
-        .header-title {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .header-title .job-title {
-            font-size: 1.2rem;
-            font-weight: 300;
-            color: var(--text-secondary);
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            color: var(--text-secondary);
-        }
-
-        .contact-info img {
-            width: 100%;
-            max-width: 200px;
-        }
-
-        .competencies ul {
-            list-style: none;
-        }
-
-        .competencies li {
-            margin-bottom: 0.75rem;
-            color: var(--text-secondary);
-        }
-
-        .competencies strong {
-            color: var(--text-primary);
+        .profile-identity h1 {
+            font-size: 1.32rem;
             font-weight: 700;
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
         }
 
-        .education ul {
-            list-style: none;
+        .role-pill {
+            display: inline-block;
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--accent);
+            line-height: 1.35;
         }
 
-        .education li {
-            margin-bottom: 0.5rem;
+        .meta-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 1.2rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--border-subtle);
+            font-size: 0.84rem;
             color: var(--text-secondary);
         }
 
-        .education strong {
-            color: var(--text-primary);
-            display: block;
-        }
-
-        .experience-item,
-        .career-highlight-item {
-            margin-bottom: 2.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .experience-item:last-child,
-        .career-highlight-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .job-header {
-            margin-bottom: 1rem;
-        }
-
-        .job-row {
+        .meta-item {
             display: flex;
-            justify-content: space-between;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .meta-item svg {
+            width: 15px;
+            height: 15px;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+
+        .profile-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            padding: 0.6rem 0.9rem;
+            border-radius: 9px;
+            font-size: 0.83rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .btn svg {
+            width: 15px;
+            height: 15px;
+            flex-shrink: 0;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #06211e;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-strong);
+            transform: translateY(-1px);
+        }
+
+        [data-theme="light"] .btn-primary {
+            color: #ffffff;
+        }
+
+        .btn-secondary {
+            background: var(--bg-surface-elevated);
+            color: var(--text-primary);
+            border-color: var(--border-subtle);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--border-strong);
+            background: var(--bg-surface-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Sidebar Section Headings */
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .eyebrow::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-subtle);
+        }
+
+        .summary-text {
+            font-size: 0.89rem;
+            color: var(--text-secondary);
+            line-height: 1.68;
+        }
+
+        /* Credentials */
+        .cred-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .cred-item {
+            padding: 0.75rem 0.85rem;
+            border-radius: var(--radius-sm);
+            background: var(--bg-surface-elevated);
+            border: 1px solid var(--border-subtle);
+            transition: border-color 0.2s ease;
+        }
+
+        .cred-item:hover {
+            border-color: var(--border-accent);
+        }
+
+        .cred-link {
+            display: flex;
             align-items: flex-start;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-size: 0.86rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.35;
+        }
+
+        .cred-link:hover {
+            color: var(--accent);
+        }
+
+        .cred-arrow {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .cred-item:hover .cred-arrow {
+            color: var(--accent);
+            transform: translate(2px, -2px);
+        }
+
+        .cred-meta {
+            margin-top: 0.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.74rem;
+            color: var(--text-muted);
+        }
+
+        .cred-divider {
+            margin: 1.15rem 0 0.85rem;
+        }
+
+        /* QR Card */
+        .qr-row {
+            display: flex;
+            align-items: center;
             gap: 1rem;
+        }
+
+        .qr-frame {
+            display: block;
+            width: 128px;
+            height: 128px;
+            padding: 6px;
+            border-radius: 10px;
+            background: #1a202c;
+            border: 1px solid var(--border-strong);
+            flex-shrink: 0;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .qr-frame:hover {
+            transform: scale(1.03);
+            border-color: var(--accent);
+        }
+
+        .qr-frame img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 5px;
+        }
+
+        .qr-copy p {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.45rem;
+            line-height: 1.45;
+        }
+
+        .qr-download-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .qr-download-link:hover {
+            color: var(--accent-strong);
+            text-decoration: underline;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2.25rem;
+            min-width: 0;
+        }
+
+        /* Executive Metrics Bar */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .metric-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.1rem 1.15rem;
+            box-shadow: var(--shadow-card);
+        }
+
+        .metric-value {
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--text-primary);
+            line-height: 1.2;
             margin-bottom: 0.25rem;
         }
 
-        .job-row:nth-child(1) {
-            font-style: regular;
+        .metric-value span {
+            color: var(--accent);
         }
 
-        .job-row:nth-child(2) {
-            font-style: italic;
-        }
-
-        .job-title-dates-left {
+        .metric-label {
+            font-size: 0.78rem;
             color: var(--text-secondary);
-            text-align: left;
-            flex: 0 0 50%;
-            padding-right: 1rem;
+            line-height: 1.35;
         }
 
-        .job-title-dates-right {
-            color: var(--text-secondary);
-            text-align: right;
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .job-title-dates {
-            color: var(--text-secondary);
-            font-style: italic;
-            text-align: right;
+        .section-title-group {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
+            flex-wrap: wrap;
         }
 
-        .experience-item ul,
-        .career-highlight-item p {
-            color: var(--text-secondary);
+        .section-index {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 500;
         }
 
-        .experience-item li {
-            margin-bottom: 0.5rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 8px 0 12px 0;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
+        .section-header h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             color: var(--text-primary);
         }
 
-        .social-link svg {
-            transition: transform 0.3s ease;
+        .section-subtitle {
+            font-family: var(--font-mono);
+            font-size: 0.76rem;
+            color: var(--text-muted);
         }
 
-        .social-link:hover svg {
-            transform: scale(1.1);
+        /* Technical Skills Matrix */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.95rem;
         }
 
-        @media (max-width: 992px) {
-            .container {
-                flex-direction: column;
-                margin: 1.5rem;
+        .skill-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 1.15rem 1.25rem;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .skill-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+
+        .skill-card.featured {
+            border-color: var(--border-accent);
+            background: linear-gradient(180deg, rgba(45, 212, 191, 0.045), transparent 55%), var(--bg-surface);
+        }
+
+        .skill-card h3 {
+            font-size: 0.84rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-card h3::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 2px;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.42rem;
+        }
+
+        .skill-tag {
+            font-size: 0.77rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: var(--bg-pill-neutral);
+            border: 1px solid var(--border-subtle);
+            padding: 0.22rem 0.55rem;
+            border-radius: 6px;
+            line-height: 1.35;
+        }
+
+        .skill-card.featured .skill-tag {
+            background: var(--bg-pill);
+            border-color: rgba(45, 212, 191, 0.2);
+            color: var(--text-primary);
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
+            padding-left: 1.65rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 10px;
+            bottom: 10px;
+            width: 1px;
+            background: linear-gradient(180deg, var(--accent) 0%, var(--border-subtle) 18%, var(--border-subtle) 100%);
+        }
+
+        .experience-card {
+            position: relative;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1.5rem;
+            box-shadow: var(--shadow-card);
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .experience-card:hover {
+            border-color: var(--border-strong);
+        }
+
+        .experience-card.current {
+            border-color: var(--border-accent);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            left: -1.65rem;
+            top: 1.65rem;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--bg-page);
+            border: 2px solid var(--border-strong);
+            z-index: 1;
+        }
+
+        .experience-card.current::before {
+            background: var(--accent);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-soft);
+        }
+
+        .exp-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 0.45rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-company-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            flex-wrap: wrap;
+        }
+
+        .exp-company {
+            font-size: 1.08rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+        }
+
+        .exp-company a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .exp-company a:hover {
+            color: var(--accent);
+        }
+
+        .exp-company .ext-arrow {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .exp-company a:hover .ext-arrow {
+            color: var(--accent);
+            transform: translate(2px, -2px);
+        }
+
+        .current-pill {
+            font-family: var(--font-mono);
+            font-size: 0.68rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            background: var(--bg-pill);
+            border: 1px solid var(--border-accent);
+            padding: 0.14rem 0.5rem;
+            border-radius: 999px;
+        }
+
+        .exp-date {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            white-space: nowrap;
+            padding-top: 0.15rem;
+        }
+
+        .exp-subrow {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.7rem;
+        }
+
+        .exp-role {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .exp-mode {
+            font-weight: 400;
+            color: var(--text-secondary);
+        }
+
+        .exp-location {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .exp-context {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.85rem;
+            line-height: 1.5;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 1.1rem;
+            font-size: 0.91rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .exp-bullets li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.62rem;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0.75;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.1rem;
+        }
+
+        .project-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 1.4rem 1.45rem;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--border-accent);
+            transform: translateY(-2px);
+        }
+
+        .project-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.75rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .project-head h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .project-head h3 a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .project-head h3 a:hover {
+            color: var(--accent);
+        }
+
+        .project-stack {
+            margin-top: auto;
+            padding-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .project-stack span {
+            font-family: var(--font-mono);
+            font-size: 0.71rem;
+            color: var(--accent);
+            background: var(--bg-pill);
+            border: 1px solid rgba(45, 212, 191, 0.22);
+            padding: 0.16rem 0.48rem;
+            border-radius: 5px;
+        }
+
+        /* Earlier Career Highlights */
+        .highlights-list {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-card);
+            overflow: hidden;
+        }
+
+        .highlight-row {
+            display: grid;
+            grid-template-columns: 112px minmax(0, 1fr);
+            gap: 1.25rem;
+            padding: 1rem 1.35rem;
+            border-bottom: 1px solid var(--border-subtle);
+            align-items: baseline;
+            transition: background-color 0.2s ease;
+        }
+
+        .highlight-row:last-child {
+            border-bottom: none;
+        }
+
+        .highlight-row:hover {
+            background: var(--bg-surface-hover);
+        }
+
+        .highlight-year {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .highlight-body h3 {
+            font-size: 0.94rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.18rem;
+        }
+
+        .highlight-body p {
+            font-size: 0.87rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Footer */
+        .page-footer {
+            max-width: 1240px;
+            margin: 0 auto;
+            padding: 1.5rem 1.5rem 3rem;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .page-footer a {
+            color: var(--text-secondary);
+        }
+
+        .page-footer a:hover {
+            color: var(--accent);
+        }
+
+        /* Reveal animation (subtle, opt-in via JS) */
+        .js-ready .reveal {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+
+        .js-ready .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1080px) {
+            .page-shell {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
             }
 
             .sidebar {
-                flex-basis: auto;
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 1.15rem;
+            }
+
+            .profile-card,
+            .summary-card {
+                grid-column: span 1;
+            }
+
+            .nav-links {
+                display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            body {
-                font-size: 14px;
+        @media (max-width: 760px) {
+            .topbar-inner {
+                padding: 0.65rem 1rem;
             }
 
-            .sidebar,
-            .main-content {
-                padding: 1.5rem;
+            .status-badge span.hide-sm {
+                display: none;
             }
 
-            h1 {
-                font-size: 1.66rem;
+            .page-shell {
+                padding: 1.25rem 1rem 3rem;
             }
 
-            h2 {
-                font-size: 1.2rem;
+            .sidebar {
+                grid-template-columns: 1fr;
             }
 
-            /* Stack job details on mobile */
-            .job-title-dates-right {
-                text-align: left;
+            .metrics-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1.25rem;
+            }
+
+            .experience-card {
+                padding: 1.2rem;
+            }
+
+            .experience-card::before {
+                left: -1.25rem;
+                width: 11px;
+                height: 11px;
+            }
+
+            .highlight-row {
+                grid-template-columns: 1fr;
+                gap: 0.25rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .background {
-                display: none;
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+                animation: none !important;
+            }
+
+            .js-ready .reveal {
+                opacity: 1;
+                transform: none;
             }
         }
 
+        /* Print / Save-as-PDF Stylesheet for Recruiters */
         @media print {
 
-            body,
-            .sidebar,
-            .main-content {
-                background-color: #ffffff;
-                color: var(--dark-bg);
+            :root,
+            [data-theme="dark"],
+            [data-theme="light"] {
+                --bg-page: #ffffff;
+                --bg-surface: #ffffff;
+                --bg-surface-elevated: #f8fafc;
+                --bg-pill: #f1f5f9;
+                --bg-pill-neutral: #f8fafc;
+                --border-subtle: #e2e8f0;
+                --border-strong: #cbd5e1;
+                --border-accent: #94a3b8;
+                --text-primary: #0f172a;
+                --text-secondary: #334155;
+                --text-muted: #64748b;
+                --accent: #0f766e;
+                --shadow-card: none;
+                --shadow-glow: none;
             }
 
-            .background {
+            body {
+                background: #ffffff !important;
+                font-size: 10.5pt;
+                line-height: 1.45;
+            }
+
+            .topbar,
+            .profile-actions,
+            .page-footer {
+                display: none !important;
+            }
+
+            .page-shell {
+                display: block;
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .sidebar {
+                position: static;
+                display: block;
+                margin-bottom: 1.25rem;
+            }
+
+            .card,
+            .metric-card,
+            .skill-card,
+            .experience-card,
+            .project-card,
+            .highlights-list {
+                box-shadow: none !important;
+                break-inside: avoid;
+                margin-bottom: 0.85rem;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(4, 1fr);
+                margin-bottom: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timeline {
+                padding-left: 0;
+            }
+
+            .timeline::before,
+            .experience-card::before {
                 display: none;
+            }
+
+            .js-ready .reveal {
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="header-title">
-                <img src="portrait.png" alt="Fred Michael Olsen Profile Photo" class="profile-photo">
-                <h1>FRED MICHAEL OLSEN</h1>
-                <p class="job-title">Forward Deployed AI Engineer</p>
+    <header class="topbar">
+        <div class="topbar-inner">
+            <div class="status-badge">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span><strong>Fred Michael Olsen</strong> <span class="hide-sm">· Oslo / Remote · Senior &amp; Lead FDE
+                        / AI Roles</span></span>
             </div>
-            <div class="sidebar-section">
-                <h2>EXECUTIVE SUMMARY</h2>
-                <p style="color: var(--text-secondary);">
+
+            <nav class="nav-links" aria-label="Page sections">
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#earlier-career">Earlier Career</a>
+                <a href="#credentials">Credentials</a>
+            </nav>
+
+            <div class="topbar-actions">
+                <button type="button" class="icon-btn" id="print-btn" aria-label="Print or save resume as PDF">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" aria-hidden="true">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Print / PDF</span>
+                </button>
+                <button type="button" class="icon-btn square" id="theme-toggle" aria-label="Toggle light or dark theme"
+                    title="Toggle light/dark theme">
+                    <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="display:none;" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-shell">
+        <aside class="sidebar">
+            <section class="card profile-card">
+                <div class="profile-top">
+                    <img src="portrait.png" alt="Fred Michael Olsen Profile Photo" class="profile-photo">
+                    <div class="profile-identity">
+                        <h1>Fred Michael Olsen</h1>
+                        <span class="role-pill">Forward Deployed AI Engineer</span>
+                    </div>
+                </div>
+
+                <div class="meta-list">
+                    <div class="meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span>Oslo, Norway · Remote or Relocation</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        <span>15+ Years · AI Agents &amp; Full-Stack Delivery</span>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer"
+                        class="btn btn-primary"
+                        aria-label="View Fred Michael Olsen's profile on LinkedIn (opens in a new tab)">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                            aria-hidden="true">
+                            <path
+                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                        </svg>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="Fred%20Michael%20Olsen.vcf" download class="btn btn-secondary"
+                        aria-label="Download vCard for Fred Michael Olsen">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>vCard</span>
+                    </a>
+                </div>
+            </section>
+
+            <section class="card summary-card" id="summary">
+                <h2 class="eyebrow">Executive Summary</h2>
+                <p class="summary-text">
                     Forward Deployed AI &amp; Full-Stack Engineer with 15+ years embedding directly with clients across
                     banking, energy, maritime, and public sectors to ship high-scale production systems. Specializes in
                     turning complex business workflows and legacy environments into modern full-stack and AI-powered
@@ -338,259 +1273,557 @@
                     proven at partnering with stakeholders and UX teams, mentoring engineers, and accelerating delivery
                     with agentic workflows. Open to remote or relocation-friendly senior/lead roles.
                 </p>
-            </div>
+            </section>
 
-            <div class="sidebar-section competencies">
-                <h2>TECHNICAL SKILLS</h2>
-                <ul>
-                    <li><strong>AI &amp; LLM Engineering:</strong> Anthropic API (Claude), LLM workflow automation,
-                        prompt guardrails &amp; validation, TensorFlow, PyTorch, Hugging Face, PEFT, LoRA, FAISS,
-                        agentic development (Claude Code, Cursor, Copilot, Pi).</li>
-                    <li><strong>Frontend:</strong> React, Next.js, TypeScript, React Native, Vue.js, Tailwind CSS,
-                        Storybook, Figma.</li>
-                    <li><strong>Backend &amp; Integration:</strong> C# .NET Core, Node.js, Python (FastAPI), RESTful
-                        APIs, Prisma ORM, Entity Framework, legacy system migration.</li>
-                    <li><strong>Cloud &amp; Delivery:</strong> Azure DevOps, AWS, Docker, CI/CD (GitHub Actions,
-                        TeamCity, Octopus), zero-downtime deployments, automated testing (Jest, Selenium).</li>
-                    <li><strong>Databases:</strong> PostgreSQL, SQL Server, MongoDB, Oracle.</li>
-                    <li><strong>Forward Deployed:</strong> End-to-end ownership, rapid prototyping to production,
-                        stakeholder &amp; UX alignment, business &amp; data process automation, team mentoring.</li>
-                </ul>
-            </div>
-
-            <div class="sidebar-section education">
-                <h2>EDUCATION</h2>
-                <ul>
-                    <li><a href="https://www.kau.se/" target="_blank" rel="noopener noreferrer"
-                            aria-label="Visit Karlstad University website (opens in a new tab)"><strong>Karlstad
-                                University</a> (2003)</strong>Informatics, 10 credits</li>
-                </ul>
-            </div>
-            <div class="sidebar-section education">
-                <h2>CERTIFICATIONS</h2>
-                <ul>
-                    <li>
-                        <a href="https://verify.skilljar.com/c/xmtp485347jg" target="_blank" rel="noopener noreferrer"
-                            aria-label="View certificate for Claude with the Anthropic API (opens in a new tab)"><strong>Claude
-                                with the Anthropic API</strong></a>
-                        <p>Anthropic (2026)</p>
-                    </li>
-                    <li>
-                        <a href="https://www.coursera.org/account/accomplishments/professional-cert/8XP7KLU1JF8R"
-                            target="_blank" rel="noopener noreferrer"
-                            aria-label="View Coursera certificate for TensorFlow Developer (opens in a new tab)"><strong>TensorFlow
-                                Developer</strong></a>
-                        <p>DeepLearning.AI (2025)</p>
-                    </li>
-                    <li>
-                        <a href="https://www.coursera.org/account/accomplishments/verify/UC32Y4W55RS4" target="_blank"
+            <section class="card" id="credentials">
+                <h2 class="eyebrow">Certifications</h2>
+                <ul class="cred-list">
+                    <li class="cred-item">
+                        <a class="cred-link" href="https://verify.skilljar.com/c/xmtp485347jg" target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="View Coursera certificate for Team Software Engineering with AI (opens in a new tab)"><strong>Team
-                                software development with AI</strong></a>
-                        <p>DeepLearning.AI (2025)</p>
+                            aria-label="View certificate for Claude with the Anthropic API (opens in a new tab)">
+                            <span>Claude with the Anthropic API</span>
+                            <span class="cred-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <div class="cred-meta">Anthropic · 2026</div>
+                    </li>
+                    <li class="cred-item">
+                        <a class="cred-link"
+                            href="https://www.coursera.org/account/accomplishments/professional-cert/8XP7KLU1JF8R"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="View Coursera certificate for TensorFlow Developer (opens in a new tab)">
+                            <span>TensorFlow Developer</span>
+                            <span class="cred-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <div class="cred-meta">DeepLearning.AI · 2025</div>
+                    </li>
+                    <li class="cred-item">
+                        <a class="cred-link" href="https://www.coursera.org/account/accomplishments/verify/UC32Y4W55RS4"
+                            target="_blank" rel="noopener noreferrer"
+                            aria-label="View Coursera certificate for Team Software Engineering with AI (opens in a new tab)">
+                            <span>Team software development with AI</span>
+                            <span class="cred-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <div class="cred-meta">DeepLearning.AI · 2025</div>
                     </li>
                 </ul>
-            </div>
-            <div class="sidebar-section contact-info">
-                <h2>CONTACT</h2>
-                <div><a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer"
-                        class="social-link"
-                        aria-label="View Fred Michael Olsen's profile on LinkedIn (opens in a new tab)">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24px"
-                            height="24px">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                        <span>My LinkedIn Profile</span>
-                    </a></div>
-                <p>Scan or tap this QR code to download my vCard</p>
-                <p><a href="Fred%20Michael%20Olsen.vcf" download aria-label="Download vCard for Fred Michael Olsen"><img
-                            src="vCard.svg" alt="QR code with vCard data" /></a></p>
-            </div>
+
+                <h2 class="eyebrow cred-divider">Education</h2>
+                <ul class="cred-list">
+                    <li class="cred-item">
+                        <a class="cred-link" href="https://www.kau.se/" target="_blank" rel="noopener noreferrer"
+                            aria-label="Visit Karlstad University website (opens in a new tab)">
+                            <span>Karlstad University</span>
+                            <span class="cred-arrow" aria-hidden="true">↗</span>
+                        </a>
+                        <div class="cred-meta">Informatics, 10 credits · 2003</div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="card">
+                <h2 class="eyebrow">Direct Contact</h2>
+                <div class="qr-row">
+                    <a class="qr-frame" href="Fred%20Michael%20Olsen.vcf" download
+                        aria-label="Download vCard for Fred Michael Olsen">
+                        <img src="vCard.svg" alt="QR code with vCard data">
+                    </a>
+                    <div class="qr-copy">
+                        <p>Scan or tap the QR code to save Fred's contact details directly to your device.</p>
+                        <a class="qr-download-link" href="Fred%20Michael%20Olsen.vcf" download>
+                            Download .vcf →
+                        </a>
+                    </div>
+                </div>
+            </section>
         </aside>
+
         <main class="main-content">
-            <section>
-                <h2>PROFESSIONAL EXPERIENCE as a contractor 2016-2026</h2>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://afki.no" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit Akademiet for Kunstig Intelligens website (opens in a new tab)">Akademiet
-                                for Kunstig Intelligens</a></h3>
-                        <p class="job-title-dates">Norway</p>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Senior AI Engineer</strong> (remote)</p>
-                            <p class="job-title-dates-right">Jun 2026 -</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Building scalable AI and machine learning solutions to automate business and data management
-                            processes</li>
-                    </ul>
+            <section class="metrics-grid reveal" aria-label="Career highlights summary">
+                <div class="metric-card">
+                    <div class="metric-value">15<span>+</span> yrs</div>
+                    <div class="metric-label">Production software &amp; enterprise delivery</div>
                 </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://www.banknorwegian.no" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit Bank Norwegian website (opens in a new tab)">Bank Norwegian (NOBA Bank
-                                Group)</a></h3>
-                        <div class="job-row">
-                            <p class="job-title-dates-left">A leading Nordic digital bank serving more than two million
-                                customers in eight countries.</p>
-                            <p class="job-title-dates-right">Fornebu, Norway / Remote</p>
-                        </div>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (remote/hybrid)</p>
-                            <p class="job-title-dates-right">Jan 2022 - Feb 2024</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Led the modernization of customer portals and mobile apps handling high-volume financial
-                            transactions across six countries.</li>
-                        <li>Architected critical frontend components using React & TypeScript within a Monorepo
-                            structure, improving code reusability.</li>
-                        <li>Migrated legacy systems to .NET 6, significantly improving API response times and security
-                            compliance.</li>
-                        <li>Engineered a comprehensive automated testing suite (Jest/Selenium) raising automated
-                            coverage and reducing production bugs.</li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="metric-value">2M<span>+</span></div>
+                    <div class="metric-label">Users served across Nordic &amp; European platforms</div>
                 </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://norconsult.no" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit Norconsult website (opens in a new tab)">Norconsult</a></h3>
-                        <div class="job-row">
-                            <p class="job-title-dates-left">A leading Nordic engineering consultancy combining
-                                infrastructure, architecture, and digital innovation, with 7,000+ employees</p>
-                            <p class="job-title-dates-right">Sandvika, Norway</p>
-                        </div>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (hybrid)</p>
-                            <p class="job-title-dates-right">Jun 2021 - Dec 2021</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Spearheaded the frontend development of 'ISY Road,' a complex SPA used by government
-                            councils for road infrastructure reporting.</li>
-                        <li>Refactored the Vue.js codebase to TypeScript, resulting in improved type safety and
-                            developer velocity.</li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="metric-value">AI <span>&amp;</span> Stack</div>
+                    <div class="metric-label">LLM agents, Python, React, Next.js &amp; .NET</div>
                 </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://bedrift.fortum.no/bedrift" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit Fortum website (opens in a new tab)">Fortum</a></h3>
-                        <div class="job-row">
-                            <p class="job-title-dates-left">A major Nordic energy provider focused on reliable,
-                                low-carbon power generation and innovative customer technology</p>
-                            <p class="job-title-dates-right">Oslo, Norway</p>
-                        </div>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong> (remote/hybrid)</p>
-                            <p class="job-title-dates-right">Feb 2019 - Dec 2020</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Led the full-stack engineering for a critical business customer portal overhaul, directly
-                            impacting user engagement and self-service rates.</li>
-                        <li>Bridged the gap between design and code, partnering with UX experts to implement
-                            pixel-perfect, responsive UIs in React and Blazor.</li>
-                        <li>Engineered secure and scalable REST APIs as the backbone for the company's consumer-facing
-                            digital products.</li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://www.udi.no" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit The Norwegian Directorate of Immigration website (opens in a new tab)">The
-                                Norwegian Directorate of Immigration</a></h3>
-                        <p class="job-title-dates">Oslo, Norway</p>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong></p>
-                            <p class="job-title-dates-right">Nov 2017 - Feb 2018</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Developed a brand new web application for booking interpreters and translators while
-                            mentoring junior developers.</li>
-                        <li>Implemented the solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity Framework.
-                        </li>
-                    </ul>
-                </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://www.helsedirektoratet.no/" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit The Norwegian Directorate of Health website (opens in a new tab)">The
-                                Norwegian Directorate of Health</a></h3>
-                        <p class="job-title-dates">Oslo, Norway</p>
-                        <div class="job-row">
-                            <p class="job-title-dates-left"><strong>Full-stack Developer</strong></p>
-                            <p class="job-title-dates-right">Nov 2016 - Oct 2017</p>
-                        </div>
-                    </div>
-                    <ul>
-                        <li>Engineered a single-page web application for processing healthcare worker license
-                            applications using React, Redux, Jest and ASP.NET Web API.</li>
-                    </ul>
+                <div class="metric-card">
+                    <div class="metric-value">0<span>→</span>Prod</div>
+                    <div class="metric-label">Process analysis to zero-downtime ops</div>
                 </div>
             </section>
-            <section>
-                <h2>OWN PROJECTS</h2>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3><a href="https://origiq.com" target="_blank" rel="noopener noreferrer"
-                                aria-label="Visit Origiq website (opens in a new tab)">Origiq</a></h3>
-                        <p class="job-title-dates">Nov 2025 - Jan 2026</p>
+
+            <section id="skills" class="reveal">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-index">01</span>
+                        <h2>Technical Skills</h2>
                     </div>
-                    <ul>
-                        <li>Single-handedly architected, developed, and shipped an enterprise-ready multilingual SaaS
-                            platform (Next.js full-stack with PostgreSQL database) supporting 5 languages including
-                            Arabic, leveraging AI-powered development workflows in Cursor and Claude Code to deliver in
-                            record time.</li>
-                        <li>Built and owned end-to-end DevOps infrastructure: Docker containerization, automated CI/CD
-                            pipelines via GitHub Actions, and production deployment architecture ensuring zero-downtime
-                            deployments for both database and application layers.</li>
-                    </ul>
+                    <span class="section-subtitle">AI · Full-Stack · Cloud · FDE</span>
                 </div>
-                <div class="experience-item">
-                    <div class="job-header">
-                        <h3>Interludo</h3>
-                        <p class="job-title-dates">May 2026 - </p>
-                    </div>
-                    <ul>
-                        <li>A Next.js/MongoDB application written in TypeScript where family therapists and couples
-                            counsellors can assign homework for their clients. Their submissions are then evaluated by a
-                            self-hosted LLM using a strict system prompt after input validation and sanitization, then a
-                            summary is sent to the therapist after output validation.</li>
-                        <li>tRPC + TanStack Query - Tailwind 4 + Radix - Stripe, Resend and Cloudflare integrations</li>
-                    </ul>
+
+                <div class="skills-grid">
+                    <article class="skill-card featured">
+                        <h3>AI &amp; LLM Engineering</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Anthropic API (Claude)</span>
+                            <span class="skill-tag">LLM workflow automation</span>
+                            <span class="skill-tag">Prompt guardrails &amp; validation</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">PyTorch</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">PEFT</span>
+                            <span class="skill-tag">LoRA</span>
+                            <span class="skill-tag">FAISS</span>
+                            <span class="skill-tag">Agentic dev (Claude Code, Cursor, Copilot, Pi)</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card featured">
+                        <h3>Forward Deployed</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">End-to-end ownership</span>
+                            <span class="skill-tag">Rapid prototyping to production</span>
+                            <span class="skill-tag">Stakeholder &amp; UX alignment</span>
+                            <span class="skill-tag">Business &amp; data process automation</span>
+                            <span class="skill-tag">Team mentoring</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>Frontend</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Vue.js</span>
+                            <span class="skill-tag">Tailwind CSS</span>
+                            <span class="skill-tag">Storybook</span>
+                            <span class="skill-tag">Figma</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>Backend &amp; Integration</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">C# .NET Core</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python (FastAPI)</span>
+                            <span class="skill-tag">RESTful APIs</span>
+                            <span class="skill-tag">Prisma ORM</span>
+                            <span class="skill-tag">Entity Framework</span>
+                            <span class="skill-tag">Legacy system migration</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>Cloud &amp; Delivery</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Azure DevOps</span>
+                            <span class="skill-tag">AWS</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">GitHub Actions</span>
+                            <span class="skill-tag">TeamCity</span>
+                            <span class="skill-tag">Octopus</span>
+                            <span class="skill-tag">Zero-downtime deployments</span>
+                            <span class="skill-tag">Automated testing (Jest, Selenium)</span>
+                        </div>
+                    </article>
+
+                    <article class="skill-card">
+                        <h3>Databases</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Google BigQuery</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">SQL Server</span>
+                            <span class="skill-tag">MongoDB</span>
+                        </div>
+                    </article>
                 </div>
             </section>
-            <section>
-                <h2>EARLIER CAREER HIGHLIGHTS (2000-2016)</h2>
-                <div class="career-highlight-item">
-                    <h3>ITverket (2015-2016)</h3>
-                    <p>Senior Consultant</p>
+
+            <section id="experience" class="reveal">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-index">02</span>
+                        <h2>Professional Experience</h2>
+                    </div>
+                    <span class="section-subtitle">Independent Contractor · 2016–2026</span>
                 </div>
-                <div class="career-highlight-item">
-                    <h3>Front Systems (2013-2014)</h3>
-                    <p>Senior Systems Developer</p>
+
+                <div class="timeline">
+                    <article class="experience-card current">
+                        <div class="exp-top">
+                            <div class="exp-company-wrap">
+                                <h3 class="exp-company">
+                                    <a href="https://afki.no" target="_blank" rel="noopener noreferrer"
+                                        aria-label="Visit Akademiet for Kunstig Intelligens website (opens in a new tab)">
+                                        Akademiet for Kunstig Intelligens
+                                        <span class="ext-arrow" aria-hidden="true">↗</span>
+                                    </a>
+                                </h3>
+                                <span class="current-pill">Current</span>
+                            </div>
+                            <span class="exp-date">Jun 2026 – Present</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Senior AI Engineer <span class="exp-mode">· Remote</span></div>
+                            <div class="exp-location">Norway</div>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Embedded as a forward deployed engineer across mid-to-large organizations, analyzing
+                                business processes to identify and resolve inefficient or failing steps using AI agents
+                                and custom Python code.</li>
+                            <li>Building scalable AI and machine learning solutions to automate business and data
+                                management processes.</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="exp-top">
+                            <h3 class="exp-company">
+                                <a href="https://www.banknorwegian.no" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit Bank Norwegian website (opens in a new tab)">
+                                    Bank Norwegian (NOBA Bank Group)
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Jan 2022 – Feb 2024</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Full-stack Developer <span class="exp-mode">· Remote / Hybrid</span>
+                            </div>
+                            <div class="exp-location">Fornebu, Norway / Remote</div>
+                        </div>
+                        <p class="exp-context">A leading Nordic digital bank serving more than two million customers in
+                            eight countries.</p>
+                        <ul class="exp-bullets">
+                            <li>Led the modernization of customer portals and mobile apps handling high-volume financial
+                                transactions across six countries.</li>
+                            <li>Architected critical frontend components using React &amp; TypeScript within a Monorepo
+                                structure, improving code reusability.</li>
+                            <li>Migrated legacy systems to .NET 6, significantly improving API response times and
+                                security compliance.</li>
+                            <li>Engineered a comprehensive automated testing suite (Jest/Selenium) raising automated
+                                coverage and reducing production bugs.</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="exp-top">
+                            <h3 class="exp-company">
+                                <a href="https://norconsult.no" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit Norconsult website (opens in a new tab)">
+                                    Norconsult
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Jun 2021 – Dec 2021</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Full-stack Developer <span class="exp-mode">· Hybrid</span></div>
+                            <div class="exp-location">Sandvika, Norway</div>
+                        </div>
+                        <p class="exp-context">A leading Nordic engineering consultancy combining infrastructure,
+                            architecture, and digital innovation, with 7,000+ employees.</p>
+                        <ul class="exp-bullets">
+                            <li>Spearheaded the frontend development of 'ISY Road,' a complex SPA used by government
+                                councils for road infrastructure reporting.</li>
+                            <li>Refactored the Vue.js codebase to TypeScript, resulting in improved type safety and
+                                developer velocity.</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="exp-top">
+                            <h3 class="exp-company">
+                                <a href="https://bedrift.fortum.no/bedrift" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit Fortum website (opens in a new tab)">
+                                    Fortum
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Feb 2019 – Dec 2020</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Full-stack Developer <span class="exp-mode">· Remote / Hybrid</span>
+                            </div>
+                            <div class="exp-location">Oslo, Norway</div>
+                        </div>
+                        <p class="exp-context">A major Nordic energy provider focused on reliable, low-carbon power
+                            generation and innovative customer technology.</p>
+                        <ul class="exp-bullets">
+                            <li>Led the full-stack engineering for a critical business customer portal overhaul,
+                                directly impacting user engagement and self-service rates.</li>
+                            <li>Bridged the gap between design and code, partnering with UX experts to implement
+                                pixel-perfect, responsive UIs in React and Blazor.</li>
+                            <li>Engineered secure and scalable REST APIs as the backbone for the company's
+                                consumer-facing digital products.</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="exp-top">
+                            <h3 class="exp-company">
+                                <a href="https://www.udi.no" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit The Norwegian Directorate of Immigration website (opens in a new tab)">
+                                    The Norwegian Directorate of Immigration
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Nov 2017 – Feb 2018</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Full-stack Developer</div>
+                            <div class="exp-location">Oslo, Norway</div>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Developed a brand new web application for booking interpreters and translators while
+                                mentoring junior developers.</li>
+                            <li>Implemented the solution using ASP.NET Core 2.0, Bootstrap, jQuery, and Entity
+                                Framework.</li>
+                        </ul>
+                    </article>
+
+                    <article class="experience-card">
+                        <div class="exp-top">
+                            <h3 class="exp-company">
+                                <a href="https://www.helsedirektoratet.no/" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit The Norwegian Directorate of Health website (opens in a new tab)">
+                                    The Norwegian Directorate of Health
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Nov 2016 – Oct 2017</span>
+                        </div>
+                        <div class="exp-subrow">
+                            <div class="exp-role">Full-stack Developer</div>
+                            <div class="exp-location">Oslo, Norway</div>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Engineered a single-page web application for processing healthcare worker license
+                                applications using React, Redux, Jest and ASP.NET Web API.</li>
+                        </ul>
+                    </article>
                 </div>
-                <div class="career-highlight-item">
-                    <h3>Independent contractor (2005-2012)</h3>
-                    <p>Developed web solutions for, among others, the Ministry of Foreign Affairs, Statnett, Innovation
-                        Norway and Red Cross.</p>
+            </section>
+
+            <section id="projects" class="reveal">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-index">03</span>
+                        <h2>Own Projects</h2>
+                    </div>
+                    <span class="section-subtitle">Founder &amp; End-to-End Engineering</span>
                 </div>
-                <div class="career-highlight-item">
-                    <h3>HansaWorld Norway (2004-2005)</h3>
-                    <p>Product Manager for an international ERP product suite.</p>
+
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-head">
+                            <h3>
+                                <a href="https://origiq.com" target="_blank" rel="noopener noreferrer"
+                                    aria-label="Visit Origiq website (opens in a new tab)">
+                                    Origiq
+                                    <span class="ext-arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </h3>
+                            <span class="exp-date">Nov 2025 – Jan 2026</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>Single-handedly architected, developed, and shipped an enterprise-ready multilingual
+                                SaaS platform (Next.js full-stack with PostgreSQL database) supporting 5 languages
+                                including Arabic, leveraging AI-powered development workflows in Cursor and Claude Code
+                                to deliver in record time.</li>
+                            <li>Built and owned end-to-end DevOps infrastructure: Docker containerization, automated
+                                CI/CD pipelines via GitHub Actions, and production deployment architecture ensuring
+                                zero-downtime deployments for both database and application layers.</li>
+                        </ul>
+                        <div class="project-stack">
+                            <span>Next.js</span>
+                            <span>PostgreSQL</span>
+                            <span>Docker</span>
+                            <span>GitHub Actions</span>
+                            <span>i18n / RTL</span>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-head">
+                            <h3>Interludo</h3>
+                            <span class="exp-date">May 2026 – Present</span>
+                        </div>
+                        <ul class="exp-bullets">
+                            <li>A Next.js/MongoDB application written in TypeScript where family therapists and couples
+                                counsellors can assign homework for their clients. Their submissions are then evaluated
+                                by a self-hosted LLM using a strict system prompt after input validation and
+                                sanitization, then a summary is sent to the therapist after output validation.</li>
+                            <li>tRPC + TanStack Query · Tailwind 4 + Radix · Stripe, Resend and Cloudflare integrations.
+                            </li>
+                        </ul>
+                        <div class="project-stack">
+                            <span>Next.js</span>
+                            <span>TypeScript</span>
+                            <span>MongoDB</span>
+                            <span>Self-Hosted LLM</span>
+                            <span>tRPC</span>
+                            <span>Stripe</span>
+                        </div>
+                    </article>
                 </div>
-                <div class="career-highlight-item">
-                    <h3>LUUP (Contopronto) (2000-2001)</h3>
-                    <p>Developed prototypes and the first production version of the mobile and web-based payment
-                        solution.</p>
+            </section>
+
+            <section id="earlier-career" class="reveal">
+                <div class="section-header">
+                    <div class="section-title-group">
+                        <span class="section-index">04</span>
+                        <h2>Earlier Career Highlights</h2>
+                    </div>
+                    <span class="section-subtitle">2000–2016</span>
+                </div>
+
+                <div class="highlights-list">
+                    <div class="highlight-row">
+                        <div class="highlight-year">2015 – 2016</div>
+                        <div class="highlight-body">
+                            <h3>ITverket</h3>
+                            <p>Senior Consultant</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-year">2013 – 2014</div>
+                        <div class="highlight-body">
+                            <h3>Front Systems</h3>
+                            <p>Senior Systems Developer</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-year">2005 – 2012</div>
+                        <div class="highlight-body">
+                            <h3>Independent contractor</h3>
+                            <p>Developed web solutions for, among others, the Ministry of Foreign Affairs, Statnett,
+                                Innovation Norway and Red Cross.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-year">2004 – 2005</div>
+                        <div class="highlight-body">
+                            <h3>HansaWorld Norway</h3>
+                            <p>Product Manager for an international ERP product suite.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-row">
+                        <div class="highlight-year">2000 – 2001</div>
+                        <div class="highlight-body">
+                            <h3>LUUP (Contopronto)</h3>
+                            <p>Developed prototypes and the first production version of the mobile and web-based payment
+                                solution.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
     </div>
+
+    <footer class="page-footer">
+        <span>Fred Michael Olsen · Forward Deployed AI Engineer</span>
+        <span>
+            <a href="https://www.linkedin.com/in/fmolsen/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            &nbsp;·&nbsp;
+            <a href="Fred%20Michael%20Olsen.vcf" download>Download vCard</a>
+        </span>
+    </footer>
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const themeBtn = document.getElementById('theme-toggle');
+            const iconSun = document.getElementById('icon-sun');
+            const iconMoon = document.getElementById('icon-moon');
+            const printBtn = document.getElementById('print-btn');
+
+            function applyTheme(theme) {
+                root.setAttribute('data-theme', theme);
+                if (theme === 'light') {
+                    iconSun.style.display = 'none';
+                    iconMoon.style.display = 'block';
+                } else {
+                    iconSun.style.display = 'block';
+                    iconMoon.style.display = 'none';
+                }
+            }
+
+            const savedTheme = localStorage.getItem('fmo-theme');
+            if (savedTheme === 'light' || savedTheme === 'dark') {
+                applyTheme(savedTheme);
+            } else {
+                applyTheme('dark');
+            }
+
+            if (themeBtn) {
+                themeBtn.addEventListener('click', function () {
+                    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                    applyTheme(next);
+                    localStorage.setItem('fmo-theme', next);
+                });
+            }
+
+            if (printBtn) {
+                printBtn.addEventListener('click', function () {
+                    window.print();
+                });
+            }
+
+            // Subtle scroll reveal
+            if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.body.classList.add('js-ready');
+                const revealEls = document.querySelectorAll('.reveal');
+                const revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+                revealEls.forEach(function (el) {
+                    revealObserver.observe(el);
+                });
+            }
+
+            // Scrollspy for top navigation links
+            const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+            const sectionTargets = navLinks
+                .map(function (link) {
+                    const id = link.getAttribute('href').slice(1);
+                    return { link: link, el: document.getElementById(id) };
+                })
+                .filter(function (item) { return Boolean(item.el); });
+
+            if ('IntersectionObserver' in window && sectionTargets.length > 0) {
+                const spyObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            const activeId = entry.target.id;
+                            navLinks.forEach(function (link) {
+                                link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+                            });
+                        }
+                    });
+                }, { rootMargin: '-25% 0px -65% 0px' });
+
+                sectionTargets.forEach(function (item) {
+                    spyObserver.observe(item.el);
+                });
+            }
+        })();
+    </script>
 </body>
 
 </html>
