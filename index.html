@@ -706,6 +706,7 @@
             background: var(--bg-page);
             border: 2px solid var(--border-strong);
             z-index: 1;
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
         }
 
         .experience-card.current::before {
@@ -1821,6 +1822,52 @@
                 sectionTargets.forEach(function (item) {
                     spyObserver.observe(item.el);
                 });
+            }
+
+            // Keep .current on the topmost visible .experience-card
+            const experienceCards = Array.from(document.querySelectorAll('.experience-card'));
+            const topbar = document.querySelector('.topbar');
+
+            if (experienceCards.length > 0) {
+                let rafScheduled = false;
+
+                function updateTopmostExperienceCard() {
+                    rafScheduled = false;
+                    const topOffset = topbar ? topbar.getBoundingClientRect().height : 0;
+                    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+
+                    let activeCard = null;
+                    for (let i = 0; i < experienceCards.length; i++) {
+                        const rect = experienceCards[i].getBoundingClientRect();
+                        if (rect.bottom > topOffset && rect.top < viewportHeight) {
+                            activeCard = experienceCards[i];
+                            break;
+                        }
+                    }
+
+                    // Fall back to first card when scrolled above timeline, or last when scrolled below
+                    if (!activeCard) {
+                        const firstRect = experienceCards[0].getBoundingClientRect();
+                        activeCard = firstRect.top >= viewportHeight
+                            ? experienceCards[0]
+                            : experienceCards[experienceCards.length - 1];
+                    }
+
+                    experienceCards.forEach(function (card) {
+                        card.classList.toggle('current', card === activeCard);
+                    });
+                }
+
+                function scheduleExperienceUpdate() {
+                    if (!rafScheduled) {
+                        rafScheduled = true;
+                        window.requestAnimationFrame(updateTopmostExperienceCard);
+                    }
+                }
+
+                window.addEventListener('scroll', scheduleExperienceUpdate, { passive: true });
+                window.addEventListener('resize', scheduleExperienceUpdate, { passive: true });
+                updateTopmostExperienceCard();
             }
         })();
     </script>
