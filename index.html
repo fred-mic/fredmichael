@@ -18,11 +18,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <script>
-    // Set theme before paint: no flash of the wrong theme.
+    // Set theme before paint: follow OS/browser preference unless the user toggled manually.
     (function () {
-      var t = localStorage.getItem('theme');
-      if (!t) t = 'light';
+      var t;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'dark' && t !== 'light') {
+        t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
       document.documentElement.dataset.theme = t;
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = t === 'dark' ? '#0b0d12' : '#fafaf9';
     })();
   </script>
   <style>
@@ -1380,11 +1385,22 @@
     document.body.classList.remove('no-js');
     var root = document.documentElement;
 
-    // Theme toggle (no animation on the page itself — only the icon morphs)
+    // Theme toggle (follows OS/browser preference until manually toggled)
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    var themeMedia = matchMedia('(prefers-color-scheme: dark)');
+    function applyTheme(t) {
+      root.dataset.theme = t;
+      if (themeMeta) themeMeta.content = t === 'dark' ? '#0b0d12' : '#fafaf9';
+    }
     document.getElementById('theme-toggle').addEventListener('click', function () {
       var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
-      root.dataset.theme = next;
-      localStorage.setItem('theme', next);
+      applyTheme(next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+    themeMedia.addEventListener('change', function (e) {
+      var saved;
+      try { saved = localStorage.getItem('theme'); } catch (err) {}
+      if (!saved) applyTheme(e.matches ? 'dark' : 'light');
     });
 
     // Print (print CSS expands earlier career)
